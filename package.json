@@ -1,0 +1,43 @@
+{
+  "name": "my-application",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "homepage": "https://telegram-mini-apps.github.io/reactjs-template",
+  "scripts": {
+    "deploy": "gh-pages -d dist",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
+    "preview": "vite preview",
+    "predeploy": "pnpm run build"
+  },
+  "dependencies": {
+    "@tma.js/react-router-integration": "^0.1.2",
+    "@tma.js/sdk": "^1.5.1",
+    "@tma.js/sdk-react": "^2.0.1",
+    "@tonconnect/ui-react": "^2.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react-swc": "^3.6.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-simple-import-sort": "^12.0.0",
+    "gh-pages": "^6.1.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.1.5",
+    "vite-tsconfig-paths": "^4.3.2"
+  }
+}
