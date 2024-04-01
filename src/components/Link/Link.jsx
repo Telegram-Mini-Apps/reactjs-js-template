@@ -6,11 +6,9 @@ import { Link as RouterLink } from 'react-router-dom';
 import './Link.css';
 
 /**
- * @param {PropsWithChildren<import('react-router-dom').LinkProps>} props
- * @return {JSX.Element}
- * @constructor
+ * @type {LinkComponent}
  */
-export function Link(props) {
+export const Link = (props) => {
   const {
     className,
     onClick: propsOnClick,
@@ -49,4 +47,4 @@ export function Link(props) {
       className={classNames(className, 'link')}
     />
   );
-}
+};

@@ -11,12 +11,21 @@ module.exports = {
   },
   extends: [
     'airbnb',
+    'airbnb-typescript',
     'airbnb/hooks',
   ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: './tsconfig.json',
+    sourceType: 'module',
+    ecmaVersion: 'latest',
+  },
   plugins: [
     'simple-import-sort',
   ],
   rules: {
+    '@typescript-eslint/no-unused-expressions': 0,
+
     // Sometimes this rule decreases readability.
     'arrow-body-style': 0,
     'consistent-return': 0,

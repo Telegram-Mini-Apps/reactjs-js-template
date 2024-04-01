@@ -5,14 +5,6 @@ import { ThemeParamsPage } from '~/pages/ThemeParamsPage/ThemeParamsPage.jsx';
 import { TONConnectPage } from '~/pages/TONConnectPage/TONConnectPage';
 
 /**
- * @typedef {Object} Route
- * @property {string} path
- * @property {ComponentType} Component
- * @property {string | undefined} title
- * @property {JSX.Element | undefined} icon
- */
-
-/**
  * @type {Route[]}
  */
 export const routes = [

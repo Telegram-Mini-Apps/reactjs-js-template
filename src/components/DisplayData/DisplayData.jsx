@@ -5,16 +5,9 @@ import { RGB } from '~/components/RGB/RGB.jsx';
 import './DisplayData.css';
 
 /**
- * @typedef {Object} DisplayDataRow
- * @property {string} title
- * @property {string | boolean | ReactNode | RGBType | undefined} value
+ * @type {DisplayDataComponent}
  */
-
-/**
- * @param {Array<DisplayDataRow>} rows
- * @return {JSX.Element}
- */
-export function DisplayData({ rows }) {
+export const DisplayData = ({ rows }) => {
   return (
     <div className="display-data">
       {rows.map(({ title, value }, idx) => {
@@ -39,4 +32,4 @@ export function DisplayData({ rows }) {
       })}
     </div>
   );
-}
+};
