@@ -1,11 +1,15 @@
 import { setDebug } from '@tma.js/sdk';
 import { DisplayGate, SDKProvider } from '@tma.js/sdk-react';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
-import { type FC, useEffect, useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 
-import { App } from '~/components/App/App.tsx';
+import { App } from '~/components/App/App.jsx';
 
-const Err: FC<{ error: unknown }> = ({ error }) => {
+/**
+ * @param {unknown} error
+ * @returns {JSX.Element}
+ */
+function Err({ error }) {
   return (
     <div>
       <p>An error occurred while initializing the SDK</p>
@@ -18,15 +22,21 @@ const Err: FC<{ error: unknown }> = ({ error }) => {
       </blockquote>
     </div>
   );
-};
+}
 
-const Loading: FC = () => {
+/**
+ * @returns {JSX.Element}
+ */
+function Loading() {
   return (
     <div>Application is loading</div>
   );
-};
+}
 
-export const Root: FC = () => {
+/**
+ * @returns {JSX.Element}
+ */
+export function Root() {
   const manifestUrl = useMemo(() => {
     return new URL('tonconnect-manifest.json', window.location.href).toString();
   }, []);
@@ -45,4 +55,4 @@ export const Root: FC = () => {
       </SDKProvider>
     </TonConnectUIProvider>
   );
-};
+}

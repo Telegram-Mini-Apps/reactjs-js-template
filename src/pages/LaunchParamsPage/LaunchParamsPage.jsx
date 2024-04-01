@@ -1,11 +1,13 @@
 import { useLaunchParams } from '@tma.js/sdk-react';
-import type { FC } from 'react';
 
-import { DisplayData } from '~/components/DisplayData/DisplayData.tsx';
-import { Link } from '~/components/Link/Link.tsx';
-import { Page } from '~/components/Page/Page.tsx';
+import { DisplayData } from '~/components/DisplayData/DisplayData.jsx';
+import { Link } from '~/components/Link/Link.jsx';
+import { Page } from '~/components/Page/Page.jsx';
 
-export const LaunchParamsPage: FC = () => {
+/**
+ * @returns {JSX.Element}
+ */
+export function LaunchParamsPage() {
   const lp = useLaunchParams();
 
   return (
@@ -35,4 +37,4 @@ export const LaunchParamsPage: FC = () => {
       />
     </Page>
   );
-};
+}

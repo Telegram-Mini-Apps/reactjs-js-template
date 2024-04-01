@@ -1,24 +1,24 @@
-import { isRGB, type RGB as RGBType } from '@tma.js/sdk';
-import type { FC, ReactNode } from 'react';
+import { isRGB } from '@tma.js/sdk';
 
-import { RGB } from '~/components/RGB/RGB.tsx';
+import { RGB } from '~/components/RGB/RGB.jsx';
 
 import './DisplayData.css';
 
-export interface DisplayDataRow {
-  title: string;
-  value?: RGBType | string | boolean | ReactNode;
-}
+/**
+ * @typedef {Object} DisplayDataRow
+ * @property {string} title
+ * @property {string | boolean | ReactNode | RGBType | undefined} value
+ */
 
-export interface DisplayDataProps {
-  rows: DisplayDataRow[];
-}
-
-export const DisplayData: FC<DisplayDataProps> = ({ rows }) => {
+/**
+ * @param {Array<DisplayDataRow>} rows
+ * @return {JSX.Element}
+ */
+export function DisplayData({ rows }) {
   return (
     <div className="display-data">
       {rows.map(({ title, value }, idx) => {
-        let valueNode: ReactNode;
+        let valueNode;
 
         if (value === undefined) {
           valueNode = <i>empty</i>;
@@ -39,4 +39,4 @@ export const DisplayData: FC<DisplayDataProps> = ({ rows }) => {
       })}
     </div>
   );
-};
+}

@@ -1,12 +1,13 @@
-import type { FC } from 'react';
-
-import { Link } from '~/components/Link/Link.tsx';
-import { Page } from '~/components/Page/Page.tsx';
-import { routes } from '~/navigation/routes.tsx';
+import { Link } from '~/components/Link/Link.jsx';
+import { Page } from '~/components/Page/Page.jsx';
+import { routes } from '~/navigation/routes.jsx';
 
 import './IndexPage.css';
 
-export const IndexPage: FC = () => {
+/**
+ * @returns {JSX.Element}
+ */
+export function IndexPage() {
   return (
     <Page title="Home Page">
       <p>
@@ -29,4 +30,4 @@ export const IndexPage: FC = () => {
       </ul>
     </Page>
   );
-};
+}

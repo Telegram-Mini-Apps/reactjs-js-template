@@ -1,14 +1,18 @@
 import { useInitData, useInitDataRaw } from '@tma.js/sdk-react';
-import { type FC, type ReactNode, useMemo } from 'react';
-import type { User } from '@tma.js/sdk';
+import { useMemo } from 'react';
 
-import { DisplayData, type DisplayDataRow } from '~/components/DisplayData/DisplayData.tsx';
-import { Link } from '~/components/Link/Link.tsx';
-import { Page } from '~/components/Page/Page.tsx';
+import { DisplayData } from '~/components/DisplayData/DisplayData.jsx';
+import { Link } from '~/components/Link/Link.jsx';
+import { Page } from '~/components/Page/Page.jsx';
 
 import './InitDataPage.css';
 
-function getUserRows(user: User): DisplayDataRow[] {
+/**
+ *
+ * @param {import('@tma.js/sdk').User} user
+ * @returns {DisplayDataRow[]}
+ */
+function getUserRows(user) {
   return [
     { title: 'id', value: user.id.toString() },
     { title: 'last_name', value: user.lastName },
@@ -19,11 +23,14 @@ function getUserRows(user: User): DisplayDataRow[] {
   ];
 }
 
-export const InitDataPage: FC = () => {
+/**
+ * @returns {JSX.Element}
+ */
+export function InitDataPage() {
   const initData = useInitData();
   const initDataRaw = useInitDataRaw();
 
-  const initDataRows = useMemo<DisplayDataRow[] | undefined>(() => {
+  const initDataRows = useMemo(() => {
     if (!initData || !initDataRaw) {
       return;
     }
@@ -42,7 +49,12 @@ export const InitDataPage: FC = () => {
       { title: 'auth_date', value: authDate.toLocaleString() },
       { title: 'auth_date (raw)', value: authDate.getTime() / 1000 },
       { title: 'hash', value: hash },
-      { title: 'can_send_after', value: canSendAfterDate?.toISOString() },
+      {
+        title: 'can_send_after',
+        value: canSendAfterDate
+          ? canSendAfterDate.toISOString()
+          : undefined,
+      },
       { title: 'can_send_after (raw)', value: canSendAfter },
       { title: 'query_id', value: queryId },
       { title: 'start_param', value: startParam },
@@ -51,16 +63,16 @@ export const InitDataPage: FC = () => {
     ];
   }, [initData, initDataRaw]);
 
-  const userRows = useMemo<DisplayDataRow[] | undefined>(() => {
+  const userRows = useMemo(() => {
     return initData && initData.user ? getUserRows(initData.user) : undefined;
   }, [initData]);
 
-  const receiverRows = useMemo<DisplayDataRow[] | undefined>(() => {
+  const receiverRows = useMemo(() => {
     return initData && initData.receiver ? getUserRows(initData.receiver) : undefined;
   }, [initData]);
 
-  const chatRows = useMemo<DisplayDataRow[] | undefined>(() => {
-    if (!initData?.chat) {
+  const chatRows = useMemo(() => {
+    if (!initData || !initData.chat) {
       return;
     }
     const { id, title, type, username, photoUrl } = initData.chat;
@@ -74,7 +86,7 @@ export const InitDataPage: FC = () => {
     ];
   }, [initData]);
 
-  let contentNode: ReactNode;
+  let contentNode;
 
   if (!initDataRows) {
     contentNode = <i>Application was launched with missing init data</i>;
@@ -127,4 +139,4 @@ export const InitDataPage: FC = () => {
       {contentNode}
     </Page>
   );
-};
+}

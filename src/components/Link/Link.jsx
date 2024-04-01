@@ -1,11 +1,16 @@
 import { classNames } from '@tma.js/sdk';
 import { useUtils } from '@tma.js/sdk-react';
-import { type FC, type MouseEventHandler, useCallback } from 'react';
-import { Link as RouterLink, type LinkProps } from 'react-router-dom';
+import { useCallback } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 
 import './Link.css';
 
-export const Link: FC<LinkProps> = (props) => {
+/**
+ * @param {PropsWithChildren<import('react-router-dom').LinkProps>} props
+ * @return {JSX.Element}
+ * @constructor
+ */
+export function Link(props) {
   const {
     className,
     onClick: propsOnClick,
@@ -13,12 +18,12 @@ export const Link: FC<LinkProps> = (props) => {
   } = props;
   const utils = useUtils();
 
-  const onClick = useCallback<MouseEventHandler<HTMLAnchorElement>>((e) => {
-    propsOnClick?.(e);
+  const onClick = useCallback((e) => {
+    propsOnClick && propsOnClick(e);
 
     // Compute if target path is external. In this case we would like to open link using
     // TMA method.
-    let path: string;
+    let path;
     if (typeof to === 'string') {
       path = to;
     } else {
@@ -44,4 +49,4 @@ export const Link: FC<LinkProps> = (props) => {
       className={classNames(className, 'link')}
     />
   );
-};
+}

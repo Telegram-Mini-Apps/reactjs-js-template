@@ -1,11 +1,10 @@
 import { useThemeParams } from '@tma.js/sdk-react';
-import type { FC } from 'react';
 
-import { DisplayData } from '~/components/DisplayData/DisplayData.tsx';
-import { Link } from '~/components/Link/Link.tsx';
-import { Page } from '~/components/Page/Page.tsx';
+import { DisplayData } from '~/components/DisplayData/DisplayData.jsx';
+import { Link } from '~/components/Link/Link.jsx';
+import { Page } from '~/components/Page/Page.jsx';
 
-export const ThemeParamsPage: FC = () => {
+export function ThemeParamsPage() {
   const themeParams = useThemeParams();
 
   return (
@@ -36,4 +35,4 @@ export const ThemeParamsPage: FC = () => {
       />
     </Page>
   );
-};
+}
