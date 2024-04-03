@@ -1,12 +1,17 @@
 import './Page.css';
 
 /**
- * @type {PageComponent}
+ * @param {string} title
+ * @param {import('react').ReactNode} [children]
+ * @param {import('react').ReactNode} [disclaimer]
+ * @return {JSX.Element}
  */
-export const Page = ({ title, children, disclaimer }) => (
-  <div className="page">
-    <h1 className="page__title">{title}</h1>
-    {disclaimer && <div className="page__disclaimer">{disclaimer}</div>}
-    {children}
-  </div>
-);
+export function Page({ title, children, disclaimer }) {
+  return (
+    <div className="page">
+      <h1 className="page__title">{title}</h1>
+      {disclaimer && <div className="page__disclaimer">{disclaimer}</div>}
+      {children}
+    </div>
+  );
+}

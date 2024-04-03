@@ -5,9 +5,16 @@ import { RGB } from '~/components/RGB/RGB.jsx';
 import './DisplayData.css';
 
 /**
- * @type {DisplayDataComponent}
+ * @typedef {object} DisplayDataRow
+ * @property {string} title
+ * @property {string | boolean | import('react').ReactNode | import('@tma.js/sdk').RGB} [value]
  */
-export const DisplayData = ({ rows }) => {
+
+/**
+ * @param {DisplayDataRow[]} rows - list of rows to be displayed.
+ * @return {JSX.Element}
+ */
+export function DisplayData({ rows }) {
   return (
     <div className="display-data">
       {rows.map(({ title, value }, idx) => {
@@ -32,4 +39,4 @@ export const DisplayData = ({ rows }) => {
       })}
     </div>
   );
-};
+}
