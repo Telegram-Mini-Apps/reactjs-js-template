@@ -1,10 +1,3 @@
-function regexp(regex) {
-  return [
-    new RegExp(regex.source + '.*[^\\u0000]$').source,
-    regex.source,
-  ];
-}
-
 module.exports = {
   env: {
     browser: true,
@@ -16,6 +9,15 @@ module.exports = {
   plugins: [
     'simple-import-sort',
   ],
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    requireConfigFile: false,
+    babelOptions: {
+      babelrc: false,
+      configFile: false,
+      presets: ['@babel/preset-env', '@babel/preset-react'],
+    },
+  },
   rules: {
     // Sometimes this rule decreases readability.
     'arrow-body-style': 0,
@@ -74,23 +76,23 @@ module.exports = {
       groups: [
         // Node.js builtins prefixed with `node:`.
         // node:fs
-        regexp(/^node:/),
+        [/^node:/.source],
 
         // Packages.
-        // react
-        regexp(/^@?\w/),
+        // solid-js
+        [/^@?\w/.source],
 
-        // Tsconfig alias.
+        // Jsconfig alias.
         // ~/helpers
-        regexp(/^~\//),
+        [/^~\//.source],
 
         // Parent imports.
         // ../Typography.js
-        regexp(/^\.\.\//),
+        [/^\.\.\//.source],
 
         // Current folder imports.
         // ./utils.js
-        regexp(/^\.\/.+\.(?!s?css)/),
+        [/^\.\/.+\.(?!s?css)/.source],
 
         // Styles.
         // ./Typography.css
