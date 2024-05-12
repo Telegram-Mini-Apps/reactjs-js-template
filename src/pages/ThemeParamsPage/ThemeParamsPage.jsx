@@ -1,8 +1,8 @@
 import { useThemeParams } from '@tma.js/sdk-react';
 
-import { DisplayData } from '~/components/DisplayData/DisplayData.jsx';
-import { Link } from '~/components/Link/Link.jsx';
-import { Page } from '~/components/Page/Page.jsx';
+import { DisplayData } from '@/components/DisplayData/DisplayData.jsx';
+import { Link } from '@/components/Link/Link.jsx';
+import { Page } from '@/components/Page/Page.jsx';
 
 export function ThemeParamsPage() {
   const themeParams = useThemeParams();

@@ -1,15 +1,14 @@
-import { useInitData, useInitDataRaw } from '@tma.js/sdk-react';
 import { useMemo } from 'react';
+import { useInitData, useLaunchParams } from '@tma.js/sdk-react';
 
-import { DisplayData } from '~/components/DisplayData/DisplayData.jsx';
-import { Link } from '~/components/Link/Link.jsx';
-import { Page } from '~/components/Page/Page.jsx';
+import { DisplayData } from '@/components/DisplayData/DisplayData.jsx';
+import { Link } from '@/components/Link/Link.jsx';
+import { Page } from '@/components/Page/Page.jsx';
 
 import './InitDataPage.css';
 
 /**
- *
- * @param {import('@tma.js/sdk').User} user
+ * @param {import('@tma.js/sdk-react').User} user
  * @returns {DisplayDataRow[]}
  */
 function getUserRows(user) {
@@ -27,8 +26,8 @@ function getUserRows(user) {
  * @returns {JSX.Element}
  */
 export function InitDataPage() {
+  const initDataRaw = useLaunchParams().initDataRaw;
   const initData = useInitData();
-  const initDataRaw = useInitDataRaw();
 
   const initDataRows = useMemo(() => {
     if (!initData || !initDataRaw) {
@@ -49,12 +48,7 @@ export function InitDataPage() {
       { title: 'auth_date', value: authDate.toLocaleString() },
       { title: 'auth_date (raw)', value: authDate.getTime() / 1000 },
       { title: 'hash', value: hash },
-      {
-        title: 'can_send_after',
-        value: canSendAfterDate
-          ? canSendAfterDate.toISOString()
-          : undefined,
-      },
+      { title: 'can_send_after', value: canSendAfterDate?.toISOString() },
       { title: 'can_send_after (raw)', value: canSendAfter },
       { title: 'query_id', value: queryId },
       { title: 'start_param', value: startParam },
@@ -72,7 +66,7 @@ export function InitDataPage() {
   }, [initData]);
 
   const chatRows = useMemo(() => {
-    if (!initData || !initData.chat) {
+    if (!initData?.chat) {
       return;
     }
     const { id, title, type, username, photoUrl } = initData.chat;

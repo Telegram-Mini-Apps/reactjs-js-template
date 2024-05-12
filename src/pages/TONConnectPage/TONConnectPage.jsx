@@ -1,9 +1,9 @@
 import { useUtils } from '@tma.js/sdk-react';
 import { TonConnectButton, useTonWallet } from '@tonconnect/ui-react';
 
-import { DisplayData } from '~/components/DisplayData/DisplayData.jsx';
-import { Link } from '~/components/Link/Link.jsx';
-import { Page } from '~/components/Page/Page.jsx';
+import { DisplayData } from '@/components/DisplayData/DisplayData.jsx';
+import { Link } from '@/components/Link/Link.jsx';
+import { Page } from '@/components/Page/Page.jsx';
 
 import './TONConnectPage.css';
 

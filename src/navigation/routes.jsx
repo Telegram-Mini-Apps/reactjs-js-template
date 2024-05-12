@@ -1,8 +1,8 @@
-import { IndexPage } from '~/pages/IndexPage/IndexPage';
-import { InitDataPage } from '~/pages/InitDataPage/InitDataPage';
-import { LaunchParamsPage } from '~/pages/LaunchParamsPage/LaunchParamsPage.jsx';
-import { ThemeParamsPage } from '~/pages/ThemeParamsPage/ThemeParamsPage.jsx';
-import { TONConnectPage } from '~/pages/TONConnectPage/TONConnectPage';
+import { IndexPage } from '@/pages/IndexPage/IndexPage';
+import { InitDataPage } from '@/pages/InitDataPage/InitDataPage';
+import { LaunchParamsPage } from '@/pages/LaunchParamsPage/LaunchParamsPage.jsx';
+import { ThemeParamsPage } from '@/pages/ThemeParamsPage/ThemeParamsPage.jsx';
+import { TONConnectPage } from '@/pages/TONConnectPage/TONConnectPage';
 
 /**
  * @typedef {object} Route
