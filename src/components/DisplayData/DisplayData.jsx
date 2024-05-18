@@ -1,13 +1,13 @@
-import { isRGB } from '@tma.js/sdk';
+import { isRGB } from '@tma.js/sdk-react';
 
-import { RGB } from '~/components/RGB/RGB.jsx';
+import { RGB } from '@/components/RGB/RGB.jsx';
 
 import './DisplayData.css';
 
 /**
  * @typedef {object} DisplayDataRow
  * @property {string} title
- * @property {string | boolean | import('react').ReactNode | import('@tma.js/sdk').RGB} [value]
+ * @property {string | boolean | import('react').ReactNode | import('@tma.js/sdk-react').RGB} [value]
  */
 
 /**
@@ -16,7 +16,7 @@ import './DisplayData.css';
  */
 export function DisplayData({ rows }) {
   return (
-    <div className="display-data">
+    <div>
       {rows.map(({ title, value }, idx) => {
         let valueNode;
 

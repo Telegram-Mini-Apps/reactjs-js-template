@@ -1,5 +1,4 @@
-import { classNames } from '@tma.js/sdk';
-import { useUtils } from '@tma.js/sdk-react';
+import { classNames, useUtils } from '@tma.js/sdk-react';
 import { useCallback } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -9,16 +8,16 @@ import './Link.css';
  * @param {import('react-router-dom').LinkProps} props
  * @return {JSX.Element}
  */
-export function Link(props) {
-  const {
-    className,
-    onClick: propsOnClick,
-    to,
-  } = props;
+export function Link({
+  className,
+  onClick: propsOnClick,
+  to,
+  ...rest
+}) {
   const utils = useUtils();
 
   const onClick = useCallback((e) => {
-    propsOnClick && propsOnClick(e);
+    propsOnClick?.(e);
 
     // Compute if target path is external. In this case we would like to open link using
     // TMA method.
@@ -43,7 +42,8 @@ export function Link(props) {
 
   return (
     <RouterLink
-      {...props}
+      {...rest}
+      to={to}
       onClick={onClick}
       className={classNames(className, 'link')}
     />

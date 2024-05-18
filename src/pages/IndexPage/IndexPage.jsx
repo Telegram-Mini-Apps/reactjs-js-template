@@ -1,6 +1,6 @@
-import { Link } from '~/components/Link/Link.jsx';
-import { Page } from '~/components/Page/Page.jsx';
-import { routes } from '~/navigation/routes.jsx';
+import { Link } from '@/components/Link/Link.jsx';
+import { Page } from '@/components/Page/Page.jsx';
+import { routes } from '@/navigation/routes.jsx';
 
 import './IndexPage.css';
 
