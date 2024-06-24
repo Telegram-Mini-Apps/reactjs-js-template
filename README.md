@@ -62,12 +62,12 @@ After this, you will see a similar message in your terminal:
 ```bash
 VITE ready in 275 ms
 
-➜  Local:   http://localhost:5173/reactjs-template
+➜  Local:   http://localhost:5173/reactjs-js-template
 ➜  press h + enter to show help
 ```
 
 To view the application, you need to open the `Local`
-link (`http://localhost:5173/reactjs-template` in this example) in your browser:
+link (`http://localhost:5173/reactjs-js-template` in this example) in your browser:
 
 ![Application](assets/application.png)
 
@@ -100,11 +100,11 @@ After uncommenting the function, run the `dev` script again and observe the outp
 ```bash
 VITE ready in 331 ms
 
-➜  Local:   https://localhost:5173/reactjs-template
+➜  Local:   https://localhost:5173/reactjs-js-template
 ➜  press h + enter to show help
 ```
 
-Visiting the `Local` link (`https://localhost:5173/reactjs-template` in this example) in your
+Visiting the `Local` link (`https://localhost:5173/reactjs-js-template` in this example) in your
 browser, you will see the following warning:
 
 ![SSL Warning](assets/ssl-warning.png)
@@ -131,10 +131,10 @@ Here is an example of the output you will see:
 ```bash
 VITE v5.2.12  ready in 257 ms
 
-➜  Local:   https://localhost:5173/reactjs-template
-➜  Network: https://172.27.224.1:5173/reactjs-template
-➜  Network: https://172.19.32.1:5173/reactjs-template
-➜  Network: https://192.168.0.171:5173/reactjs-template
+➜  Local:   https://localhost:5173/reactjs-js-template
+➜  Network: https://172.27.224.1:5173/reactjs-js-template
+➜  Network: https://172.19.32.1:5173/reactjs-js-template
+➜  Network: https://192.168.0.171:5173/reactjs-js-template
 ```
 
 All `Network` links listed here are accessible to devices on the same network. Using these links,
