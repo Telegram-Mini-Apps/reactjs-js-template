@@ -74,8 +74,8 @@ link (`http://localhost:5173/reactjs-template` in this example) in your browser:
 It is important to note that some libraries in this template, such as `@tma.js/sdk`, are not
 intended for use outside of Telegram.
 
-Nevertheless, they appear to function properly. This is because the `src/mockEnv.ts` file, which is
-imported in the application's entry point (`src/index.ts`), employs the `mockTelegramEnv` function
+Nevertheless, they appear to function properly. This is because the `src/mockEnv.js` file, which is
+imported in the application's entry point (`src/index.js`), employs the `mockTelegramEnv` function
 to simulate the Telegram environment. This trick convinces the application that it is running in a
 Telegram-based environment. Therefore, be cautious not to use this function in production mode
 unless you fully understand its implications.
@@ -89,7 +89,7 @@ To run the application inside Telegram, [@BotFather](https://t.me/botfather) req
 
 This template already provides a solution.
 
-Navigate to the `vite.config.ts` file and uncomment the usage of the `basicSsl` function. This
+Navigate to the `vite.config.js` file and uncomment the usage of the `basicSsl` function. This
 function utilizes
 the [@vitejs/plugin-basic-ssl](https://www.npmjs.com/package/@vitejs/plugin-basic-ssl) plugin, which
 enables the creation of an HTTPS link. Note that this plugin generates a self-signed certificate,
@@ -121,7 +121,7 @@ Telegram Mini App. This approach provides the full development experience.
 
 Sometimes, you might want to view the application on other devices.
 
-To expose your development server to local network devices, go to the `vite.config.ts` file and
+To expose your development server to local network devices, go to the `vite.config.js` file and
 uncomment the line defining the `host` option.
 
 Alternatively, you can achieve this by running the command `vite --host`.
@@ -164,7 +164,7 @@ Before running the deployment process, ensure that you have done the following:
 
 1. Replaced the `homepage` value in `package.json`. The GitHub Pages deploy tool uses this value to
    determine the related GitHub project.
-2. Replaced the `base` value in `vite.config.ts` and have set it to the name of your GitHub
+2. Replaced the `base` value in `vite.config.js` and have set it to the name of your GitHub
    repository. Vite will use this value when creating paths to static assets.
 
 For instance, if your GitHub username is `telegram-mini-apps` and the repository name
@@ -176,7 +176,7 @@ is `is-awesome`, the value in the `homepage` field should be the following:
 }
 ```
 
-And `vite.config.ts` should have this content:
+And `vite.config.js` should have this content:
 
 ```ts
 export default defineConfig({
