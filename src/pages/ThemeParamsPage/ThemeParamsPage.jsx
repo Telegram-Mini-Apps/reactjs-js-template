@@ -1,26 +1,13 @@
 import { useThemeParams } from '@tma.js/sdk-react';
+import { List } from '@telegram-apps/telegram-ui';
 
 import { DisplayData } from '@/components/DisplayData/DisplayData.jsx';
-import { Link } from '@/components/Link/Link.jsx';
-import { Page } from '@/components/Page/Page.jsx';
 
 export function ThemeParamsPage() {
   const themeParams = useThemeParams();
 
   return (
-    <Page
-      title="Theme Params"
-      disclaimer={(
-        <>
-          This page displays current
-          {' '}
-          <Link to="https://docs.telegram-mini-apps.com/platform/theming">
-            theme parameters
-          </Link>
-          . It is reactive, so, changing theme externally will lead to this page updates.
-        </>
-      )}
-    >
+    <List>
       <DisplayData
         rows={
           Object
@@ -33,6 +20,6 @@ export function ThemeParamsPage() {
             }))
         }
       />
-    </Page>
+    </List>
   );
 }

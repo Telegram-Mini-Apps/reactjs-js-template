@@ -3,11 +3,12 @@ import {
   bindMiniAppCSSVars,
   bindThemeParamsCSSVars,
   bindViewportCSSVars,
-  initNavigator,
+  initNavigator, useLaunchParams,
   useMiniApp,
   useThemeParams,
   useViewport,
 } from '@tma.js/sdk-react';
+import { AppRoot } from '@telegram-apps/telegram-ui';
 import { useEffect, useMemo } from 'react';
 import {
   Navigate,
@@ -22,6 +23,7 @@ import { routes } from '@/navigation/routes.jsx';
  * @return {JSX.Element}
  */
 export function App() {
+  const lp = useLaunchParams();
   const miniApp = useMiniApp();
   const themeParams = useThemeParams();
   const viewport = useViewport();
@@ -38,7 +40,7 @@ export function App() {
     return viewport && bindViewportCSSVars(viewport);
   }, [viewport]);
 
-  // Create new application navigator and attach it to the browser history, so it could modify
+  // Create a new application navigator and attach it to the browser history, so it could modify
   // it and listen to its changes.
   const navigator = useMemo(() => initNavigator('app-navigation-state'), []);
   const [location, reactNavigator] = useIntegration(navigator);
@@ -51,11 +53,16 @@ export function App() {
   }, [navigator]);
 
   return (
-    <Router location={location} navigator={reactNavigator}>
-      <Routes>
-        {routes.map((route) => <Route key={route.path} {...route} />)}
-        <Route path='*' element={<Navigate to='/'/>}/>
-      </Routes>
-    </Router>
+    <AppRoot
+      appearance={miniApp.isDark ? 'dark' : 'light'}
+      platform={['macos', 'ios'].includes(lp.platform) ? 'ios' : 'base'}
+    >
+      <Router location={location} navigator={reactNavigator}>
+        <Routes>
+          {routes.map((route) => <Route key={route.path} {...route} />)}
+          <Route path='*' element={<Navigate to='/'/>}/>
+        </Routes>
+      </Router>
+    </AppRoot>
   );
 }

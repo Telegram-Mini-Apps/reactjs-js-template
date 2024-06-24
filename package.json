@@ -11,23 +11,25 @@
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0 --fix",
     "preview": "vite preview",
-    "predeploy": "pnpm run build"
+    "predeploy": "npm run build"
   },
   "dependencies": {
-    "@tma.js/react-router-integration": "^2.0.0",
-    "@tma.js/sdk-react": "^2.1.4",
-    "@tonconnect/ui-react": "^2.0.2",
+    "@telegram-apps/telegram-ui": "^2.1.4",
+    "@tma.js/react-router-integration": "^4.0.3",
+    "@tma.js/sdk-react": "^2.2.5",
+    "@tonconnect/ui-react": "^2.0.5",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
     "eruda": "^3.0.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.23.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.24.0"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
     "@babel/eslint-parser": "^7.24.1",
     "@babel/preset-env": "^7.24.4",
     "@babel/preset-react": "^7.24.1",
-    "@types/react": "^18.3.2",
     "@vitejs/plugin-react-swc": "^3.6.0",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
