@@ -30,6 +30,7 @@
     "@babel/eslint-parser": "^7.24.1",
     "@babel/preset-env": "^7.24.4",
     "@babel/preset-react": "^7.24.1",
+    "@vitejs/plugin-basic-ssl": "^1.1.0",
     "@vitejs/plugin-react-swc": "^3.6.0",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
