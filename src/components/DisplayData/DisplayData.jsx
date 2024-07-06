@@ -1,4 +1,4 @@
-import { isRGB } from '@tma.js/sdk-react';
+import { isRGB } from '@telegram-apps/sdk-react';
 import { Cell, Checkbox, Section } from '@telegram-apps/telegram-ui';
 
 import { RGB } from '@/components/RGB/RGB.jsx';
@@ -9,7 +9,7 @@ import './DisplayData.css';
 /**
  * @typedef {object} DisplayDataRow
  * @property {string} title
- * @property {string | boolean | import('react').ReactNode | import('@tma.js/sdk-react').RGB} [value]
+ * @property {string | boolean | import('react').ReactNode | import('@telegram-apps/sdk-react').RGB} [value]
  */
 
 /**

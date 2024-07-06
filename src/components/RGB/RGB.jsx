@@ -1,9 +1,9 @@
-import { classNames } from '@tma.js/sdk-react';
+import { classNames } from '@telegram-apps/sdk-react';
 
 import './RGB.css';
 
 /**
- * @param {import('@tma.js/sdk-react').RGB} color
+ * @param {import('@telegram-apps/sdk-react').RGB} color
  * @param {string} [className]
  * @param rest
  * @return {JSX.Element}

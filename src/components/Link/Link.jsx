@@ -1,4 +1,4 @@
-import { classNames, useUtils } from '@tma.js/sdk-react';
+import { classNames, useUtils } from '@telegram-apps/sdk-react';
 import { useCallback } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
