@@ -1,15 +1,10 @@
 import { useMemo } from 'react';
-import { useInitData, useLaunchParams } from '@telegram-apps/sdk-react';
+import { initData, useSignal } from '@telegram-apps/sdk-react';
 import { List, Placeholder } from '@telegram-apps/telegram-ui';
 
 import { DisplayData } from '@/components/DisplayData/DisplayData.jsx';
+import { Page } from '@/components/Page.jsx';
 
-import './InitDataPage.css';
-
-/**
- * @param {import('@telegram-apps/sdk-react').User} user
- * @returns {DisplayDataRow[]}
- */
 function getUserRows(user) {
   return [
     { title: 'id', value: user.id.toString() },
@@ -25,54 +20,60 @@ function getUserRows(user) {
   ];
 }
 
-/**
- * @returns {JSX.Element}
- */
 export function InitDataPage() {
-  const initDataRaw = useLaunchParams().initDataRaw;
-  const initData = useInitData();
+  const initDataRaw = useSignal(initData.raw);
+  const initDataState = useSignal(initData.state);
 
   const initDataRows = useMemo(() => {
-    if (!initData || !initDataRaw) {
+    if (!initDataState || !initDataRaw) {
       return;
     }
     const {
+      authDate,
       hash,
       queryId,
       chatType,
       chatInstance,
-      authDate,
-      startParam,
       canSendAfter,
-      canSendAfterDate,
-    } = initData;
+      startParam,
+    } = initDataState;
     return [
       { title: 'raw', value: initDataRaw },
       { title: 'auth_date', value: authDate.toLocaleString() },
       { title: 'auth_date (raw)', value: authDate.getTime() / 1000 },
       { title: 'hash', value: hash },
-      { title: 'can_send_after', value: canSendAfterDate?.toISOString() },
+      { title: 'can_send_after', value: initData.canSendAfterDate()?.toISOString() },
       { title: 'can_send_after (raw)', value: canSendAfter },
       { title: 'query_id', value: queryId },
       { title: 'start_param', value: startParam },
       { title: 'chat_type', value: chatType },
       { title: 'chat_instance', value: chatInstance },
     ];
-  }, [initData, initDataRaw]);
+  }, [initDataState, initDataRaw]);
 
   const userRows = useMemo(() => {
-    return initData && initData.user ? getUserRows(initData.user) : undefined;
-  }, [initData]);
+    return initDataState && initDataState.user
+      ? getUserRows(initDataState.user)
+      : undefined;
+  }, [initDataState]);
 
   const receiverRows = useMemo(() => {
-    return initData && initData.receiver ? getUserRows(initData.receiver) : undefined;
-  }, [initData]);
+    return initDataState && initDataState.receiver
+      ? getUserRows(initDataState.receiver)
+      : undefined;
+  }, [initDataState]);
 
   const chatRows = useMemo(() => {
-    if (!initData?.chat) {
+    if (!initDataState?.chat) {
       return;
     }
-    const { id, title, type, username, photoUrl } = initData.chat;
+    const {
+      id,
+      title,
+      type,
+      username,
+      photoUrl,
+    } = initDataState.chat;
 
     return [
       { title: 'id', value: id.toString() },
@@ -85,24 +86,28 @@ export function InitDataPage() {
 
   if (!initDataRows) {
     return (
-      <Placeholder
-        header="Oops"
-        description="Application was launched with missing init data"
-      >
-        <img
-          alt="Telegram sticker"
-          src="https://xelene.me/telegram.gif"
-          style={{ display: 'block', width: '144px', height: '144px' }}
-        />
-      </Placeholder>
-    )
+      <Page>
+        <Placeholder
+          header="Oops"
+          description="Application was launched with missing init data"
+        >
+          <img
+            alt="Telegram sticker"
+            src="https://xelene.me/telegram.gif"
+            style={{ display: 'block', width: '144px', height: '144px' }}
+          />
+        </Placeholder>
+      </Page>
+    );
   }
   return (
-    <List>
-      <DisplayData header={'Init Data'} rows={initDataRows}/>
-      {userRows && <DisplayData header={'User'} rows={userRows}/>}
-      {receiverRows && <DisplayData header={'Receiver'} rows={receiverRows}/>}
-      {chatRows && <DisplayData header={'Chat'} rows={chatRows}/>}
-    </List>
-  )
+    <Page>
+      <List>
+        <DisplayData header={'Init Data'} rows={initDataRows}/>
+        {userRows && <DisplayData header={'User'} rows={userRows}/>}
+        {receiverRows && <DisplayData header={'Receiver'} rows={receiverRows}/>}
+        {chatRows && <DisplayData header={'Chat'} rows={chatRows}/>}
+      </List>
+    </Page>
+  );
 }

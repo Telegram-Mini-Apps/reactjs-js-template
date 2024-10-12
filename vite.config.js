@@ -2,7 +2,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vite';
-// import basicSsl from '@vitejs/plugin-basic-ssl';
+import mkcert from 'vite-plugin-mkcert';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -11,9 +11,9 @@ export default defineConfig({
     // Allows using React dev server along with building a React application with Vite.
     // https://npmjs.com/package/@vitejs/plugin-react-swc
     react(),
-    // Allows using self-signed certificates to run the dev server using HTTPS.
-    // https://www.npmjs.com/package/@vitejs/plugin-basic-ssl
-    // basicSsl(),
+    // Create a custom SSL certificate valid for the local machine.
+    // https://www.npmjs.com/package/vite-plugin-mkcert
+    mkcert(),
   ],
   publicDir: './public',
   server: {

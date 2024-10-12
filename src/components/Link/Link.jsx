@@ -1,4 +1,4 @@
-import { classNames, useUtils } from '@telegram-apps/sdk-react';
+import { classNames, openLink } from '@telegram-apps/sdk-react';
 import { useCallback } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -14,8 +14,6 @@ export function Link({
   to,
   ...rest
 }) {
-  const utils = useUtils();
-
   const onClick = useCallback((e) => {
     propsOnClick?.(e);
 
@@ -36,9 +34,9 @@ export function Link({
 
     if (isExternal) {
       e.preventDefault();
-      return utils.openLink(targetUrl.toString());
+      openLink(targetUrl.toString());
     }
-  }, [to, propsOnClick, utils]);
+  }, [to, propsOnClick]);
 
   return (
     <RouterLink
