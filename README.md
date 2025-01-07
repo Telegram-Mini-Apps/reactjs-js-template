@@ -1,5 +1,8 @@
 # Telegram Mini Apps React Template
 
+> [!WARNING]
+> This template is archived and is more likely to be out of date. Consider using its supported [TypeScript alternative](https://github.com/Telegram-Mini-Apps/reactjs-template).
+
 This template demonstrates how developers can implement a single-page
 application on the Telegram Mini Apps platform using the following technologies
 and libraries:
